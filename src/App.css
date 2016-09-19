@@ -29,23 +29,24 @@
     }
 }
 
-.GameList-table {
+.GameList {
     margin-left: auto;
     margin-right: auto;
+    display: table;
 }
 
-.Game-tr {
+.Game {
     height: 54px;
+    display: table-row;
 }
 
-.Game-td-left {
-    text-align: left;
-    vertical-align: middle;
-    width: 90px;
+.GameTeam,
+.GameTeamHelmet {
+    display: table-cell;
 }
 
-.Game-td-right {
-    text-align: right;
+.GameTeam {
+    text-align: center;
     vertical-align: middle;
     width: 90px;
 }
