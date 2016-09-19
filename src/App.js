@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// const NFLOdds = require("nflodds");
+// var nfl_odds = new NFLOdds();
+// var game_odds = nfl_odds.get((err, result) => {
+//     console.log(result);
+// });
+
+// var nflScores = require("nfl_scores");
+// var game_scores = nflScores.refresh((err, scores) => {
+//     console.log(scores.week);
+//     console.log(scores.games);
+// });
+
 class App extends Component {
   render() {
     return (
