@@ -2,6 +2,7 @@
   "name": "grandpa-football",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://edwenger.github.io/grandpa-football",
   "devDependencies": {
     "react-scripts": "0.4.1"
   },
