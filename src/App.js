@@ -3,11 +3,14 @@ import './App.css';
 import logo from './football.svg';
 
 // TODO: get game odds from e.g. http://www.footballlocks.com/nfl_odds.shtml
-var data = [
-    {id: 0, favorite: 'det', underdog: 'ten', spread: 6},
-    {id: 1, favorite: 'hou', underdog: 'kc', spread: 1},
-    {id: 2, favorite: 'ne', underdog: 'mia', spread: 5.5}
-];
+var data = {
+    week: 2,
+    games: [
+        {id: 0, favorite: 'det', underdog: 'ten', spread: 6},
+        {id: 1, favorite: 'hou', underdog: 'kc', spread: 1},
+        {id: 2, favorite: 'ne', underdog: 'mia', spread: 5.5}
+    ]
+};
 
 var teams = ['det', 'ten', 'hou', 'kc', 'ne', 'mia'];
 var team_logos = {};
@@ -21,7 +24,7 @@ var Game = React.createClass({
         return (
             <tr className="Game-tr">
                 <td className="Game-td-helmet"><img src={team_logos[this.props.favorite]} alt=""/></td>
-                <td className="Game-td-left">{this.props.favorite + " -" + this.props.spread}</td>
+                <td className="Game-td-left">{this.props.favorite} -{this.props.spread}</td>
                 <td className="Game-td-right">{this.props.underdog}</td>
                 <td className="Game-td-helmet"><img src={team_logos[this.props.underdog]} alt=""/></td>
             </tr>
@@ -55,8 +58,8 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h2>grandpa.football</h2>
                 </div>
-                <p className="App-intro">Week 2</p>
-                <GameList data={data}/>
+                <p className="App-intro">Week {data.week}</p>
+                <GameList data={data.games}/>
             </div>
         );
     }
