@@ -1,33 +1,65 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import logo from './football.svg';
 
-// const NFLOdds = require("nflodds");
-// var nfl_odds = new NFLOdds();
-// var game_odds = nfl_odds.get((err, result) => {
-//     console.log(result);
-// });
+// TODO: get game odds from e.g. http://www.footballlocks.com/nfl_odds.shtml
+var data = [
+    {id: 0, favorite: 'det', underdog: 'ten', spread: 6},
+    {id: 1, favorite: 'hou', underdog: 'kc', spread: 1},
+    {id: 2, favorite: 'ne', underdog: 'mia', spread: 5.5}
+];
 
-// var nflScores = require("nfl_scores");
-// var game_scores = nflScores.refresh((err, scores) => {
-//     console.log(scores.week);
-//     console.log(scores.games);
-// });
+var teams = ['det', 'ten', 'hou', 'kc', 'ne', 'mia'];
+var team_logos = {};
+teams.forEach((name) => {
+    team_logos[name] = require("./teams/" + name + ".png")
+})
+
+var Game = React.createClass({
+    displayName: 'Game',
+    render: function () {
+        return (
+            <tr className="Game-tr">
+                <td className="Game-td-helmet"><img src={team_logos[this.props.favorite]} alt=""/></td>
+                <td className="Game-td-left">{this.props.favorite + " -" + this.props.spread}</td>
+                <td className="Game-td-right">{this.props.underdog}</td>
+                <td className="Game-td-helmet"><img src={team_logos[this.props.underdog]} alt=""/></td>
+            </tr>
+        );
+    }
+});
+
+var GameList = React.createClass({
+    displayName: 'GameList',
+    render: function () {
+        var gameNodes = this.props.data.map(function (game) {
+            return (
+                <Game key={game.id} favorite={game.favorite} underdog={game.underdog} spread={game.spread}/>
+            );
+        });
+        return (
+            <table className="GameList-table">
+                <tbody>
+                {gameNodes}
+                </tbody>
+            </table>
+        );
+    }
+});
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <div className="App-header">
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    <h2>grandpa.football</h2>
+                </div>
+                <p className="App-intro">Week 2</p>
+                <GameList data={data}/>
+            </div>
+        );
+    }
 }
 
 export default App;
