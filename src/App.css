@@ -2,17 +2,18 @@
     text-align: center;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 50px;
+.App-header {
+    background-image: url("./team_photo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 220px;
+    margin: 10px;
+    color: white;
 }
 
-.App-header {
-    background-color: #222;
-    background-image: url("./grass.jpeg");
-    height: 150px;
-    padding: 20px;
-    color: yellow;
+p {
+    margin: 3px;
+
 }
 
 .App-intro {
@@ -20,13 +21,9 @@
     font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.tips {
+    font-size: small;
+    color: #333;
 }
 
 .GameList {
@@ -48,5 +45,5 @@
 .GameTeam {
     text-align: center;
     vertical-align: middle;
-    width: 90px;
+    width: 120px;
 }
