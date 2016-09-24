@@ -1,0 +1,35 @@
+p {
+    margin: 3px;
+}
+
+.intro {
+    font-size: large;
+    font-weight: bold;
+}
+
+.tips {
+    font-size: small;
+    color: #333;
+}
+
+.GameList {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.Game {
+    height: 54px;
+    display: table-row;
+}
+
+.GameTeam,
+.GameTeamHelmet {
+    display: table-cell;
+}
+
+.GameTeam {
+    text-align: center;
+    vertical-align: middle;
+    width: 120px;
+}
