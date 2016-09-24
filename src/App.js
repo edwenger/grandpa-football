@@ -3,15 +3,32 @@ import './App.css';
 
 // TODO: get game odds from e.g. http://www.footballlocks.com/nfl_odds.shtml
 var data = {
-    week: 2,
+    week: 3,
     games: [
-        {id: 0, favorite: 'det', underdog: 'ten', spread: 6},
-        {id: 1, favorite: 'hou', underdog: 'kc', spread: 1},
-        {id: 2, favorite: 'ne', underdog: 'mia', spread: 5.5}
+        {id: 0, favorite: 'cin', underdog: 'den', spread: 3.5},
+        {id: 1, favorite: 'oak', underdog: 'ten', spread: 1},
+        {id: 2, favorite: 'ari', underdog: 'buf', spread: 4},
+        {id: 3, favorite: 'bal', underdog: 'jax', spread: 1},
+        {id: 4, favorite: 'mia', underdog: 'cle', spread: 9.5},
+        {id: 5, favorite: 'nyg', underdog: 'was', spread: 3},
+        {id: 6, favorite: 'gb', underdog: 'det', spread: 7},
+        {id: 7, favorite: 'car', underdog: 'min', spread: 7},
+        {id: 8, favorite: 'sea', underdog: 'sf', spread: 9.5},
+        {id: 9, favorite: 'tb', underdog: 'la', spread: 5},
+        {id: 10, favorite: 'pit', underdog: 'phi', spread: 3.5},
+        {id: 11, favorite: 'kc', underdog: 'nyj', spread: 3},
+        {id: 12, favorite: 'ind', underdog: 'sd', spread: 1},
+        {id: 13, favorite: 'dal', underdog: 'chi', spread: 6.5},
+        {id: 14, favorite: 'no', underdog: 'atl', spread: 3},
     ]
 };
 
-var teams = ['det', 'ten', 'hou', 'kc', 'ne', 'mia'];
+var teams = [
+    'cin', 'den', 'oak', 'ten', 'ari', 'buf', 'bal', 'jax',
+    'mia', 'cle', 'nyg', 'was', 'gb', 'det', 'car', 'min',
+    'sea', 'sf', 'tb', 'la', 'pit', 'phi', 'kc', 'nyj',
+    'ind', 'sd', 'dal', 'chi', 'no', 'atl', 'ne', 'hou'
+];
 var team_logos = {};
 teams.forEach((name) => {
     team_logos[name] = require("./teams/" + name + ".png")
@@ -38,7 +55,8 @@ class GameTeamHelmet extends Component {
 
 class GameTeam extends Component {
     render() {
-        var textStyle = this.props.picked ? {fontWeight: "bold"} : {};
+        var highlighted = {fontWeight: "bold", fontSize: "larger", backgroundColor: "#ddd"};
+        var textStyle = this.props.picked ? highlighted : {};
         return (
             <div className="GameTeam" style={textStyle}>{this.props.team}{this.props.spread}</div>
         );
@@ -90,7 +108,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="App-header" />
+                <div className="App-header"/>
                 <p className="App-intro">Week {data.week}</p>
                 <p className="tips">Click logos to make picks...</p>
                 <GameList data={data.games}/>
